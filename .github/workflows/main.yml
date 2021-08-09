@@ -6,7 +6,7 @@ name: chat_bot
 # Controls when the workflow will run
 on:
   push:
-    
+
   # schedule:
   #   - cron: '0 * * * *'
 
@@ -49,4 +49,4 @@ jobs:
         run: |
           git add .
           git commit -m "Add Text" -a
-          git push origin main
+          git push origin master
