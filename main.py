@@ -7,4 +7,6 @@ from check_site import cosme_bs, kao_bs, m_donguri_bs, m_donguri_bs, k_donguri_b
 import os
 
 if __name__ == "__main__":
-    send_message("test")
+    access_token = os.environ.get('ACCESS_TOKEN')
+    user_id = os.environ.get('LINE_ID')
+    send_message(access_token, user_id, "test")

@@ -137,15 +137,11 @@ def k_donguri_bs():
 
 
 # メッセージを送る
-def send_message(talk):
+def send_message(access_token, user_id, talk):
     # メッセージ送信用に変換
     message = TextSendMessage(text=talk)
-    # jsonファイルを読み込む
-    # file = open('info.json', 'r')
-    # info = json.load(file)
+
     # secretsに登録した環境変数の呼び出し
-    access_token = os.environ['ACCESS_TOKEN']
-    user_id = os.environ['LINE_ID']
     # LINEbotにトークンを入力
     line_bot_api = LineBotApi(access_token)
     # LINEbotでメッセージを送る
