@@ -1,12 +1,17 @@
 from bs4 import BeautifulSoup
 import requests
+import json
+from linebot import LineBotApi
+from linebot.models import TextSendMessage
 
 # アットコスメの情報の更新を確認する
 
 
-def cosme_bs(url, old_file):
+def cosme_bs():
+    url = "https://cosmeet.cosme.net/product/search/page/0/sad/0/srt/1/fw/%89%D4%89%A4"
     res = requests.get(url)
     soup = BeautifulSoup(res.text, "html.parser")
+    old_file = "old_elem.txt"
 
     # 今回取り込んだ情報を取り出す
     new_elem = str(soup.select(".mdl-pdt-idv")
@@ -24,14 +29,16 @@ def cosme_bs(url, old_file):
     else:
         with open(old_file, "w") as f:
             f.write(new_elem)
-        return True
+        return f"アットコスメの商品情報が更新されました！\n{url}"
 
 # 花王のサイトの更新を確認する
 
 
-def kao_bs(kurl, kold_file):
+def kao_bs():
+    kurl = "https://www.kao.com/jp/products/newproducts/"
     res = requests.get(kurl)
     soup = BeautifulSoup(res.text, "html.parser")
+    kold_file = "k_old_elem.txt"
 
     # 今回取り込んだ情報を取り出す
     new_elem = str(soup.select(".g-TileLinkVUnit__leadBlock")[0].get_text())
@@ -48,14 +55,16 @@ def kao_bs(kurl, kold_file):
     else:
         with open(kold_file, "w") as f:
             f.write(new_elem)
-        return True
+        return f"花王の商品情報が更新されました！\n{kurl}"
 
 # koseのサイトの更新を確認する
 
 
-def kose_bs(surl, sold_file):
+def kose_bs():
+    surl = "https://maison.kose.co.jp/site/goods/search.aspx?sort=rd&search=%E6%A4%9C%E7%B4%A2%E3%81%99%E3%82%8B&search_reservationnew=1"
     res = requests.get(surl)
     soup = BeautifulSoup(res.text, "html.parser")
+    sold_file = "s_old_elem.txt"
 
     # 今回取り込んだ情報を取り出す
     new_elem = str(soup.select(".c-product__product-name")
@@ -73,21 +82,23 @@ def kose_bs(surl, sold_file):
     else:
         with open(sold_file, "w") as f:
             f.write(new_elem)
-        return True
+        return f"koseの商品情報が更新されました！\n{surl}"
 
 # どんぐり共和国の更新を通知
 
 
-def donguri_bs(durl, dold_file):
-    res = requests.get(durl)
+def m_donguri_bs():
+    majo_url = "https://www.donguri-sora.com/products/list.php?category_id=252"
+    res = requests.get(majo_url)
     soup = BeautifulSoup(res.text, "html.parser")
+    majo_file = "majo_old_elem.txt"
 
     # 今回取り込んだ情報を取り出す
     new_elem = str(soup.select(".photo-box")[0])
 
     # 前回のデータを取り込む
     try:
-        with open(dold_file) as f:
+        with open(majo_file) as f:
             old_elem = f.read()
     except:
         old_elem = ""
@@ -95,40 +106,51 @@ def donguri_bs(durl, dold_file):
     if new_elem == old_elem:
         return False
     else:
-        with open(dold_file, "w") as f:
+        with open(majo_file, "w") as f:
             f.write(new_elem)
-        return True
+        return f"魔女の宅急便の商品情報が更新されました！\n{majo_url}"
+
+
+def k_donguri_bs():
+    buta_url = "https://www.donguri-sora.com/products/list.php?category_id=255"
+    res = requests.get(buta_url)
+    soup = BeautifulSoup(res.text, "html.parser")
+    buta_file = "buta_old_elem.txt"
+
+    # 今回取り込んだ情報を取り出す
+    new_elem = str(soup.select(".photo-box")[0])
+
+    # 前回のデータを取り込む
+    try:
+        with open(buta_file) as f:
+            old_elem = f.read()
+    except:
+        old_elem = ""
+
+    if new_elem == old_elem:
+        return False
+    else:
+        with open(buta_file, "w") as f:
+            f.write(new_elem)
+        return f"紅の豚の商品情報が更新されました！\n{buta_url}"
+
+
+# メッセージを送る
+def send_message(talk):
+    # メッセージ送信用に変換
+    message = TextSendMessage(text=talk)
+    # jsonファイルを読み込む
+    # file = open('info.json', 'r')
+    # info = json.load(file)
+    access_token = "B8cNk7a1+nEp2/+940YrYaApUjGins7+HAd63R/D1QwmI/k/ZOuxXVruhKwzdUF7cdsCMipf05tXbjRn4JJvalJ4DEHHJlcTr8DS9Cl0t/SwHt2dDXBw071OLpEukK8SmA3NrBFLxI6tJVDveFN29gdB04t89/1O/w1cDnyilFU="
+    user_id = "U3f9a97bd6f269ee7fb1f6c619479a8dc"
+    # LINEbotにトークンを入力
+    line_bot_api = LineBotApi(access_token)
+    # LINEbotでメッセージを送る
+    line_bot_api.push_message(user_id, messages=message)
+    # bot友達の全員に送信
+    # line_bot_api.broadcast(messages=message)
 
 
 if __name__ == "__main__":
-    url = "https://cosmeet.cosme.net/product/search/page/0/sad/0/srt/1/fw/%89%D4%89%A4"
-    kurl = "https://www.kao.com/jp/products/newproducts/"
-    # surl = "https://maison.kose.co.jp/site/goods/search.aspx?sort=rd&search=%E6%A4%9C%E7%B4%A2%E3%81%99%E3%82%8B&search_reservationnew=1"
-    majo_url = "https://www.donguri-sora.com/products/list.php?category_id=252"
-    buta_url = "https://www.donguri-sora.com/products/list.php?category_id=255"
-
-    old_file = "old_elem.txt"
-    kold_file = "k_old_elem.txt"
-    # sold_file = "s_old_elem.txt"
-    majo_file = "majo_old_elem.txt"
-    buta_file = "buta_old_elem.txt"
-
-    if cosme_bs(url, old_file) == True:
-        print("アットコスメのWEBページが更新されました！")
-        print(url)
-
-    if kao_bs(kurl, kold_file) == True:
-        print("花王のWEBページが更新されました！")
-        print(kurl)
-
-    # if kose_bs(surl, sold_file) == True:
-    #     print("KOSEのWEBページが更新されました！")
-    #     print(surl)
-
-    if donguri_bs(majo_url, majo_file) == True:
-        print("魔女の宅急便のWEBページが更新されました！")
-        print(majo_url)
-
-    if donguri_bs(buta_url, buta_file) == True:
-        print("紅の豚のWEBページが更新されました！")
-        print(buta_url)
+    print(m_donguri_bs())
