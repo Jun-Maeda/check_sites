@@ -32,6 +32,8 @@ jobs:
           pip install line-bot-sdk
           pip install bs4
           pip install requests
+          pip install sys
+          pip install os
       
       # Runs a set of commands using the runners shell
       - name: Run script
@@ -39,7 +41,7 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # secretsに登録した環境変数
           LINE_ID: ${{ secrets.LINE_ID }} # secretsに登録した環境変数
         run: |
-          python main.py ACCESS_TOKEN LINE_ID
+          python main.py {{ secrets.ACCESS_TOKEN }} ${{ secrets.LINE_ID }} 
           
       - name: git setting
         run: |
