@@ -144,8 +144,8 @@ def send_message(talk):
     # file = open('info.json', 'r')
     # info = json.load(file)
     # secretsに登録した環境変数の呼び出し
-    access_token = os.environ.get("ACCESS_TOKEN")
-    user_id = os.environ.get("LINE_ID")
+    access_token = os.environ.get('ACCESS_TOKEN')
+    user_id = os.environ.get('LINE_ID')
     # LINEbotにトークンを入力
     line_bot_api = LineBotApi(access_token)
     # LINEbotでメッセージを送る
