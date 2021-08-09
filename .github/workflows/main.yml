@@ -32,6 +32,8 @@ jobs:
           pip install line-bot-sdk
           pip install bs4
           pip install requests
+      - name: Test env vars for python
+        run: ACCESS_TOKEN=${{ secrets.ACCESS_TOKEN }} python -c 'import os;print(os.environ['ACCESS_TOKEN'])
       
       # Runs a set of commands using the runners shell
       - name: Run script
