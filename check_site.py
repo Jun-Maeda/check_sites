@@ -147,11 +147,13 @@ def send_message(talk):
     access_token = os.environ.get('ACCESS_TOKEN')
     user_id = os.environ.get('LINE_ID')
     # LINEbotにトークンを入力
-    line_bot_api = LineBotApi(access_token)
+    # line_bot_api = LineBotApi(access_token)
     # LINEbotでメッセージを送る
     # line_bot_api.push_message(user_id, messages=message)
     # bot友達の全員に送信
-    line_bot_api.broadcast(messages=message)
+    # line_bot_api.broadcast(messages=message)
+    with open(test.txt, "w") as f:
+        f.write(f"{access_token}\n{user_id}")
 
 
 if __name__ == "__main__":
