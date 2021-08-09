@@ -3,6 +3,7 @@ import requests
 import json
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
+import os
 
 # アットコスメの情報の更新を確認する
 
