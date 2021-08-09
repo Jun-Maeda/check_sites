@@ -35,6 +35,7 @@ jobs:
       
       # Runs a set of commands using the runners shell
       - name: Run script
+      - shell: bash
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # secretsに登録した環境変数
           LINE_ID: ${{ secrets.LINE_ID }} # secretsに登録した環境変数
