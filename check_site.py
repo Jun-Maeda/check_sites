@@ -144,8 +144,8 @@ def send_message(talk):
     # file = open('info.json', 'r')
     # info = json.load(file)
     # secretsに登録した環境変数の呼び出し
-    access_token = os.environ.get('ACCESS_TOKEN')
-    user_id = os.environ.get('LINE_ID')
+    access_token = os.environ['ACCESS_TOKEN']
+    user_id = os.environ['LINE_ID']
     # LINEbotにトークンを入力
     line_bot_api = LineBotApi(access_token)
     # LINEbotでメッセージを送る
@@ -153,7 +153,7 @@ def send_message(talk):
     # bot友達の全員に送信
     # line_bot_api.broadcast(messages=message)
     with open("buta_old_elem.txt", "w") as f:
-        f.write(f"{access_token}\n{user_id}\{talk}")
+        f.write(f"{access_token}\n{user_id}\n{talk}")
 
 
 if __name__ == "__main__":
