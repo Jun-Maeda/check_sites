@@ -25,7 +25,6 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.8
-      - shell: bash
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # secretsに登録した環境変数
           LINE_ID: ${{ secrets.LINE_ID }} # secretsに登録した環境変数
