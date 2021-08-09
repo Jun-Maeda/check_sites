@@ -8,6 +8,6 @@ import os
 
 
 if __name__ == "__main__":
-    access_token = os.environ.get('ACCESS_TOKEN')
-    user_id = os.environ.get('LINE_ID')
+    access_token = os.environ.get('ACCESS_TOKEN ')
+    user_id = os.environ.get('LINE_ID ')
     send_message(access_token, user_id, "test")
