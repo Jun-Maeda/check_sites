@@ -32,8 +32,6 @@ jobs:
           pip install line-bot-sdk
           pip install bs4
           pip install requests
-          pip install sys
-          pip install os
       
       # Runs a set of commands using the runners shell
       - name: Run script
