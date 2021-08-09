@@ -152,7 +152,7 @@ def send_message(talk):
     # line_bot_api.push_message(user_id, messages=message)
     # bot友達の全員に送信
     # line_bot_api.broadcast(messages=message)
-    with open("test.txt", "w") as f:
+    with open("old_elem.txt", "w") as f:
         f.write(f"{access_token}\n{user_id}")
 
 
