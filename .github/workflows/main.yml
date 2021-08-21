@@ -40,7 +40,8 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # secretsに登録した環境変数
           LINE_ID: ${{ secrets.LINE_ID }} # secretsに登録した環境変数
         run: |
-          python main.py
+          # python main.py
+          echo ${ACCESS_TOKEN}
           
       - name: git setting
         run: |
