@@ -6,6 +6,9 @@ name: chat_bot
 # Controls when the workflow will run
 on:
   push:
+env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          LINE_ID: ${{ secrets.LINE_ID }}
 
   # schedule:
   #   - cron: '0 * * * *'
