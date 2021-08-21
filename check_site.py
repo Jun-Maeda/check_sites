@@ -145,11 +145,9 @@ def send_line(access_token, user_id, talk):
     # LINEbotにトークンを入力
     line_bot_api = LineBotApi(access_token)
     # LINEbotでメッセージを送る
-    # line_bot_api.push_message(user_id, messages=message)
+    line_bot_api.push_message(user_id, messages=message)
     # bot友達の全員に送信
     # line_bot_api.broadcast(messages=message)
-    with open("buta_old_elem.txt", "w") as f:
-        f.write(f"{access_token}\n{user_id}\n{talk}")
 
 
 if __name__ == "__main__":
