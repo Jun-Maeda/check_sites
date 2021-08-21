@@ -6,10 +6,6 @@ name: chat_bot
 # Controls when the workflow will run
 on:
   push
-env: 
-  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-  LINE_ID: ${{ secrets.LINE_ID }}
-
   # schedule:
   #   - cron: '0 * * * *'
 
@@ -39,11 +35,12 @@ jobs:
       
       # Runs a set of commands using the runners shell
       - name: Run script
-        # env: 
-          # ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          # LINE_ID: ${{ secrets.LINE_ID }}
+        env: 
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          LINE_ID: ${{ secrets.LINE_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python main.py
+          echo ${GITHUB_TOKEN}
           
       - name: git setting
         run: |
