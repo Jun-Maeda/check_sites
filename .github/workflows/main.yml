@@ -39,7 +39,7 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           LINE_ID: ${{ secrets.LINE_ID }}
         run: |
-          echo ${GITHUB_TOKEN}
+          echo ${ACCESS_TOKEN}
           
       - name: git setting
         run: |
