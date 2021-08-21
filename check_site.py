@@ -153,7 +153,4 @@ def send_line(access_token, user_id, talk):
 
 
 if __name__ == "__main__":
-    access_token = os.environ.get('ACCESS_TOKEN ')
-    user_id = os.environ.get('LINE_ID ')
-    # LINEを送る
-    send_line(str(access_token), str(user_id), "test")
+    print(m_donguri_bs())
