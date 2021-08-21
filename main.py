@@ -10,4 +10,5 @@ import os
 if __name__ == "__main__":
     access_token = os.environ.get('ACCESS_TOKEN ')
     user_id = os.environ.get('LINE_ID ')
+    # LINEを送る
     send_line(access_token, user_id, "test")
