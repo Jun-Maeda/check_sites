@@ -38,9 +38,8 @@ jobs:
         env: 
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           LINE_ID: ${{ secrets.LINE_ID }}
-          TEST: ${{ secrets.TEST }}
         run: |
-          echo ${ACCESS_TOKEN}
+          python main.py
           
       - name: git setting
         run: |
