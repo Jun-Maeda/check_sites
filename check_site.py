@@ -137,7 +137,7 @@ def k_donguri_bs():
 
 
 # メッセージを送る
-def send_message(access_token, user_id, talk):
+def send_line(access_token, user_id, talk):
     # メッセージ送信用に変換
     message = TextSendMessage(text=talk)
 
