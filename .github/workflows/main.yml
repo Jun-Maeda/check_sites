@@ -38,7 +38,6 @@ jobs:
         env: 
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           LINE_ID: ${{ secrets.LINE_ID }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo ${GITHUB_TOKEN}
           
