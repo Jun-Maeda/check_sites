@@ -45,8 +45,8 @@ jobs:
         run: |
           git config --local user.email "jun_pure@icloud.com"
           git config --local user.name "Jun-Maeda"
-      # - name: Commit files
-      #   run: |
-      #     git add .
-      #     git commit -m "Add Text" -a
-      #     git push origin master
+      - name: Commit files
+        run: |
+          git add .
+          git commit -m "Add Text" -a
+          git push origin master
