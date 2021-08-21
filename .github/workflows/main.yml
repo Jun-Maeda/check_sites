@@ -40,7 +40,7 @@ jobs:
           LINE_ID: ${{ secrets.LINE_ID }}
           TEST: ${{ secrets.TEST }}
         run: |
-          echo ${TEST}
+          echo ${ACCESS_TOKEN}
           
       - name: git setting
         run: |
