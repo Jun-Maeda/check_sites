@@ -11,4 +11,5 @@ if __name__ == "__main__":
     access_token = os.environ['ACCESS_TOKEN']
     user_id = os.environ['LINE_ID']
     # LINEを送る
-    send_line(str(access_token), str(user_id), "test")
+    # send_line(str(access_token), str(user_id), "test")
+    print(access_token)

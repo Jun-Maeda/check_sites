@@ -43,8 +43,7 @@ jobs:
           # ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           # LINE_ID: ${{ secrets.LINE_ID }}
         run: |
-          # python main.py
-          echo ${ACCESS_TOKEN}
+          python main.py
           
       - name: git setting
         run: |
