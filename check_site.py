@@ -151,4 +151,4 @@ def send_line(access_token, user_id, talk):
 
 
 if __name__ == "__main__":
-    print(m_donguri_bs())
+    print(k_donguri_bs())

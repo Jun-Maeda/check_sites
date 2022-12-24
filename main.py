@@ -13,13 +13,15 @@ if __name__ == "__main__":
     user_id = os.environ['LINE_ID']
 
     # スクレイピングを実行
-    cosme = cosme_bs()
+    # cosme = cosme_bs()
     kao = kao_bs()
     majo = m_donguri_bs()
     buta = k_donguri_bs()
 
-    all_datas = [cosme, kao, majo, buta]
+    all_datas = [kao, majo, buta]
 
     for data in all_datas:
         if data != False:
             send_line(access_token, user_id, data)
+        else:
+            pass
